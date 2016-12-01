@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+		<H2>{{{name}}}</H2>
+		<img src="{{{thumbnail}}}" alt="{{{name}}} art" height="300" width="200">
+		<p>Rating: {{{rating}}}</p>
+		<p>{{{description}}}</p>
+		<div class="new-comment">
+			<form>
+			<input type="text" name="title">
+			<input type="text" name="review">
+			<input type="number" name="rating">
+			<button type="submit">Submit</button>
+			</form>
+		</div>
+		<div class="reviews">
+		{{#each reviews}}
+        {{> review }}
+        {{/each}}
+		</div>
+    </div>
+</div>
