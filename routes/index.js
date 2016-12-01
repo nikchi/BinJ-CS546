@@ -1,4 +1,4 @@
-const userRoutes = require("./user");
+const userRoutes = require("./users");
 const showsRoutes = require("./shows");
 const reviewsRoutes = require("./reviews");
 
