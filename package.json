@@ -1,0 +1,19 @@
+{
+  "name": "binj-cs546",
+  "version": "1.0.0",
+  "description": "for Stevens cs546",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikchi/BinJ-CS546.git"
+  },
+  "author": "Nick Choi Stan Mikuta Ben Tucker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nikchi/BinJ-CS546/issues"
+  },
+  "homepage": "https://github.com/nikchi/BinJ-CS546#readme"
+}
