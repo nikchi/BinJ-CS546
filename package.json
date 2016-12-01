@@ -17,7 +17,7 @@
     "url": "https://github.com/nikchi/BinJ-CS546/issues"
   },
   "homepage": "https://github.com/nikchi/BinJ-CS546#readme",
-    "dependencies": {
+  "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
