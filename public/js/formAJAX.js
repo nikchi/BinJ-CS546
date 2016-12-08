@@ -4,7 +4,8 @@
 	var newReviewForm = $("#review-submit"),
 		newTitle = $("#review-title"),
 		newBody = $("#review-body"),
-		newRating = $("#review-rating");
+		newRating = $("#review-rating"),
+		newShowTitle = $("#title");
 
 
 	newReviewForm.submit(function (event) {
@@ -15,7 +16,8 @@
 		var title = newTitle.val();
 		var body = newBody.val();
 		var rating = parseInt(newRating.val());
-		console.log(title + " " + body + " " + rating);
+		var showTitle = newShowTitle.html();
+		console.log(title + " " + body + " " + rating + " " + showTitle);
 
 		if (title && body && rating) {
 			var requestConfig = {
@@ -23,6 +25,7 @@
 				url: "/",
 				contentType: 'application/json',
 				data: JSON.stringify({
+					showName: showTitle, 
 					title: title,
 					body: body,
 					rating: rating
