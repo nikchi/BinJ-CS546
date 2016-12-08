@@ -18,6 +18,39 @@ let exportedMethods = {
       });
     });
   },
+  changeReviewRateUp(showId, reviewId) {
+    return shows().then((showCollection) => {
+      return showCollection.findOne({ _id: id }).then((show) => {
+        if (!show) throw "show not found";
+        return show.reviews.updateOne({ _id: reviewId }, { $inc: { "reviews.rating": 1 } });
+      });
+    });
+  },
+  changeReviewRateUp(showId, reviewId) {
+    return shows().then((showCollection) => {
+      return showCollection.findOne({ _id: id }).then((show) => {
+        if (!show) throw "show not found";
+        return show.reviews.updateOne({ _id: reviewId }, { $inc: { "reviews.rating": -1 } });
+      });
+    });
+  },
+  addReviewToShow(showId, poster, title, body) {
+    let newReview = {
+      _id : uuid.v4(),
+      title: title,
+      body: body,
+      poster: poster,
+      rating: 0,
+      flagged: false
+    };
+    return shows().then((showCollection) => {
+      return showCollection.findOne({ _id: showId}).then((show) => {
+        if (!show) throw "show not find";
+        show.reviews.push(newReview);
+        return newReview;
+      });
+    });
+  },
   addShow(name, description, thumbnail, preview, rating, reviews) {
     return shows().then((showCollection) => {
       let newShow = {

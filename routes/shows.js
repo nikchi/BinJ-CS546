@@ -19,4 +19,11 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/:id", (req, res) => {
+    showsData.addReviewToShow(req.body.id, req.body.poster, req.body.title, req.body.body);
+});
+
+router.post("/:id/up", (req, res) => {
+
+});
 module.exports = router;
