@@ -12,31 +12,28 @@ let exportedMethods = {
   getShowById(id) {
     return shows().then((showCollection) => {
       return showCollection.findOne({ _id: id }).then((show) => {
-        if (!show) throw "Review not found";
+        if (!show) throw "show not found";
         return show;
       });
     });
   },
   addShow(name, description, thumbnail, preview, rating, reviews) {
-    return reviews().then((reviewsCollection) => {
-      return users.getUserById(posterId)
-        .then((userThatPosted) => {
-          let newShow = {
-            name: name,
-            description: description,
-            thumbnail: thumbnail,
-            preview: preview,
-            rating: rating,
-            reviews: [],
-            _id: uuid.v4()
-          };
+    return shows().then((showCollection) => {
+      let newShow = {
+        name: name,
+        description: description,
+        thumbnail: thumbnail,
+        preview: preview,
+        rating: rating,
+        reviews: [],
+        _id: uuid.v4()
+      };
 
-          return postCollection.insertOne(newPost).then((newInsertInformation) => {
-            return newInsertInformation.insertedId;
-          }).then((newId) => {
-            return this.getPostById(newId);
-          });
-        });
+      return showCollection.insertOne(newShow).then((newInsertInformation) => {
+        return newInsertInformation.insertedId;
+      }).then((newId) => {
+        return this.getShowById(newId);
+      });
     });
   },
   removeShow(id) {
