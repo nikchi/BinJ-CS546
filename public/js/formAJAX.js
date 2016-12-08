@@ -1,11 +1,42 @@
 (function ($, location, history) {
+
+	//variables for review-form
+	var newReviewForm = $("#review-submit"),
+		newTitle = $("#review-title"),
+		newBody = $("#review-body"),
+		newRating = $("#review-rating");
+
+
+	newReviewForm.submit(function (event) {
+		event.preventDefault();
+
+		console.log("help");
+
+		var title = newTitle.val();
+		var body = newBody.val();
+		var rating = parseInt(newRating.val());
+		console.log(title + " " + body + " " + rating);
+
+		if (title && body && rating) {
+			var requestConfig = {
+				method: "POST",
+				url: "/",
+				contentType: 'application/json',
+				data: JSON.stringify({
+					title: title,
+					body: body,
+					rating: rating
+				})
+			};
+
+			$.ajax(requestConfig).then(function (responseMessage) {
+				window.loacation = "/shows/" + 0002;
+			});
+		}
+	});
+
+})(window.jQuery, window.location, window.history);
 /*
-	// variables for form page
-	var myNewNoteForm = $("#new-note-form"),
-		newTitleInput = $("#new-note-title"),
-        newSummaryInput = $("#new-note-summary"),
-		newDateInput = $("#new-note-dueDate"),
-		newBodyInput = $("#new-note-body");
 		
 	// variables for single page
 	var nextNoteLink = $("#next-note-link"),
@@ -69,5 +100,4 @@
 		
 	});
 */
-		
-})(window.jQuery, window.location, window.history);
+	

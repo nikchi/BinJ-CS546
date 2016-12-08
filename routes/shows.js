@@ -5,7 +5,7 @@ const showsData = data.shows;
 
 router.get("/:id", (req, res) => {
     showsData.getShowById(req.params.id).then((show) => {
-        res.render('single', { show: show });
+        res.render('single', { show: show});
     }).catch(() => {
         res.status(404).json({ error: "Post not found" });
     });
@@ -19,8 +19,9 @@ router.get("/", (req, res) => {
     });
 });
 
-router.post("/:id", (req, res) => {
+router.post("/", (req, res) => {
     showsData.addReviewToShow(req.body.id, req.body.poster, req.body.title, req.body.body);
+	res.json({success: true});
 });
 
 router.post("/:id/up", (req, res) => {
