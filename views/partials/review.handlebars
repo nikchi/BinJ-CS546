@@ -1,8 +1,13 @@
 <div class="col-sm-12 col-md-8">
-	<h2><a href="/{{ id }}">{{ title }}</a></h2>
+	<h2>{{ title }}</h2>
 	<p> Rating: {{{reviewRating}}} </p>
 	<p> Poster: {{{poster}}} </p>
+	<div id="counter">
+		<a>🍿</a>
+		<p>{{rating}}</p> {{!-- {{Will need to use jquery/ajax to update this number without reloading page}} --}}
+		<a> </a>
+	</div>
 	<div id="flagged">
-	<img src="flagged.jpg"
+		<img src="flagged.jpg">
 	</div>
 </div>
