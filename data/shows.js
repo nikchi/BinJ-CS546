@@ -1,6 +1,7 @@
 const mongoCollections = require("../config/mongoCollections");
 const shows = mongoCollections.shows;
 const users = require("./users");
+const reviewsData = require("./reviews");
 const uuid = require('node-uuid');
 
 let exportedMethods = {
