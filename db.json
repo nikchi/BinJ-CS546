@@ -1,0 +1,55 @@
+
+//shows
+[{
+        name: "westworld",
+        description: "have you ever questioned the nature of your reality",
+        thumbnail: "westworld picture",
+        preview: "youtube link",
+        rating: 13,
+        reviews: ["1111", "1112", "1113"],
+        _id: "0001"
+},
+{
+        name: "Archer",
+        description: "cel shaded guns",
+        thumbnail: "archer pict",
+        preview: "youtube link",
+        rating: 12,
+        reviews: [],
+        _id: "0002"
+},
+{
+        name: "Game of Thrones",
+        description: "sean bean dies",
+        thumbnail: "thrones pict",
+        preview: "youtube link",
+        rating: 12,
+        reviews: [],
+        _id: "0003"
+}]
+
+//reviews
+[{
+        _id: "1111",
+        title: "good show" ,
+        poster: "steve",
+        body: "i like this show",
+        rating: 0,
+        flagged: false
+},
+{
+        _id: "1112",
+        title: "bad show" ,
+        poster: "ricky",
+        body: "i hate this show",
+        rating: 0,
+        flagged: false
+},
+{
+        _id: "1113",
+        title: "show" ,
+        poster: "LANA",
+        body: "show",
+        rating: 0,
+        flagged: false
+}]
