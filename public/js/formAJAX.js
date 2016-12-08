@@ -1,4 +1,5 @@
 (function ($, location, history) {
+/*
 	// variables for form page
 	var myNewNoteForm = $("#new-note-form"),
 		newTitleInput = $("#new-note-title"),
@@ -67,5 +68,6 @@
             });
 		
 	});
+*/
 		
 })(window.jQuery, window.location, window.history);
