@@ -17,25 +17,42 @@ main {
 	margin: 0px;
 	padding:10px;
 }
+.newcomment h2{
+	padding: 0;
+	margin: 0;
+}
 
 .shows-list {
 	width: 210px;
 }
 
 .review-box {
-	width: inherit;
+	width: auto;
+	height: auto;
+	padding: 0;
+	margin: 0;
 	position: static;
 	padding: 10px;
-	width: 200px;
+	display: inline;
 }
 
 .review-body {
 	width: inherit;
-	float: left;
+	height: fit-content;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	white-space: nowrap;
 }
 
 .counter {
-	float: right;
+	display: inline-block;
+	white-space: nowrap;
+}
+
+.flagged {
+	display: inline-block;
+	white-space: nowrap;	
 }
 
 

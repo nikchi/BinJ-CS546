@@ -5,16 +5,18 @@
 		<img src="{{ thumbnail }}" alt="{{ show.name }} art" height="300" width="200">
 		<p>Rating: {{ show.rating }}</p>
 		<p>Description: {{ show.description }}</p>
-		<div class="new-comment">
-			<form id="review-submit" method="post">
-				<input id="review-title" type="text" name="title">
-				<input id="review-body" type="text" name="review">
-				<input id="review-rating" type="number" name="rating">
-				<button id="review-submit-button" type="submit">Submit</button>
-			</form>
-		</div>
+
 		<div class="reviews">
 			{{#each show.reviews}} {{> review }} {{/each}}
+		</div>
+		<div class="new-comment">
+			<h2> Submit your opinion </h2>
+			<form id="review-submit" method="post">
+				<input id="review-title" placeholder="Title" type="text" name="title"></br>
+				<input id="review-body" placeholder="Review goes here" type="text" name="review"></br>
+				<input id="review-rating" placeholder="$100%" type="number" name="rating"></br>
+				<button id="review-submit-button" type="submit">Submit</button>
+			</form>
 		</div>
 	</div>
 </div>
