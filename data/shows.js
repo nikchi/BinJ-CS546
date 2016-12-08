@@ -17,6 +17,14 @@ let exportedMethods = {
         return show;
       });
     });
+  },  
+  getShowByName(name) {
+    return shows().then((showCollection) => {
+      return showCollection.findOne({ title: name }).then((show) => {
+        if (!show) throw "show not found";
+        return show;
+      });
+    });
   },
   changeReviewRateUp(showId, reviewId) {
     return shows().then((showCollection) => {
