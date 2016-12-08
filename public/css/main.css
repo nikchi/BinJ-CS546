@@ -1,0 +1,29 @@
+html {
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	background-color: orange;
+	padding: 0px;
+}
+
+
+main {
+	height: 100%;
+	min-height: 800px;
+	float:left;
+	background-color: white;
+	width: 1000px;
+	margin: 0px;
+	padding:10px;
+}
+
+#sidebar {
+	width: 100px;
+	left:0;
+	float:left;
+	background-color: orange;
+	margin: 0px;
+	padding:0px;
+}
