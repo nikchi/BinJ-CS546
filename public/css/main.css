@@ -23,12 +23,14 @@ main {
 }
 
 .review-box {
+	width: inherit;
 	position: static;
 	padding: 10px;
 	width: 200px;
 }
 
 .review-body {
+	width: inherit;
 	float: left;
 }
 
