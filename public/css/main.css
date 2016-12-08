@@ -55,6 +55,13 @@ main {
 	white-space: nowrap;	
 }
 
+.show-art {
+	display: inline-block;
+}
+
+#title {
+
+}
 
 #sidebar {
 	width: 100px;
