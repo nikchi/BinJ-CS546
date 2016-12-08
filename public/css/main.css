@@ -8,7 +8,6 @@ body {
 	padding: 0px;
 }
 
-
 main {
 	height: 100%;
 	min-height: 800px;
@@ -19,6 +18,25 @@ main {
 	padding:10px;
 }
 
+.shows-list {
+	width: 210px;
+}
+
+.review-box {
+	position: static;
+	padding: 10px;
+	width: 200px;
+}
+
+.review-body {
+	float: left;
+}
+
+.counter {
+	float: right;
+}
+
+
 #sidebar {
 	width: 100px;
 	left:0;
@@ -27,3 +45,4 @@ main {
 	margin: 0px;
 	padding:0px;
 }
+

@@ -1,13 +1,16 @@
-<div class="col-sm-12 col-md-8">
-	<h2>{{ title }}</h2>
-	<p> Rating: {{{reviewRating}}} </p>
-	<p> Poster: {{{poster}}} </p>
-	<div id="counter">
+<div class="review-box">
+	<div class= "review-body">
+		<h2>{{ title }}</h2>
+		<p> Rating: {{reviewRating}} </p>
+		<p> Poster: {{poster}} </p>
+		<p> {{body}} </p>
+	</div>
+	<div class="counter">
 		<a><i class="em em-clap"></i></a>
 		<p>{{reviewRating}}</p> {{!-- {{Will need to use jquery/ajax to update this number without reloading page}} --}}
 		<a><i class="em em-poop"></i></a>
 	</div>
-	<div id="flagged" >
+	<div class="flagged" >
 		<img src="flagged.jpg">
 	</div>
 </div>
