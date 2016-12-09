@@ -1,6 +1,6 @@
 (function ($, location, history) {
 
-	//variables for review-form
+	//variables for review-form elements
 	var newReviewForm = $("#review-submit"),
 		newTitle = $("#review-title"),
 		newBody = $("#review-body"),
@@ -10,8 +10,6 @@
 
 	newReviewForm.submit(function (event) {
 		event.preventDefault();
-
-		console.log("help");
 
 		var title = newTitle.val();
 		var body = newBody.val();
@@ -33,9 +31,22 @@
 			};
 
 			$.ajax(requestConfig).then(function (responseMessage) {
-				window.loacation = "/shows/" + showName;
+				window.loacation = "/shows/" + showTitle;
 			});
 		}
+	});
+
+	//variables for up/down voting elements
+	var upVote = $("#upvote"),
+		downVote = $("#downvote"),
+		counter = $("#score");
+	
+
+	var upVote.click(function (event) {
+		event.preventDefault();
+		
+
+
 	});
 
 })(window.jQuery, window.location, window.history);
