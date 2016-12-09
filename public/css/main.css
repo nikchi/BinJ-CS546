@@ -57,6 +57,7 @@ main {
 
 .show-art {
 	display: inline-block;
+	height: inherit;
 }
 
 #title {
