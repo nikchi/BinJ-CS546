@@ -38,7 +38,7 @@
     name: "Archer",
     description: "cel shaded guns",
     thumbnail: "archer pict",
-    preview: "youtube link",
+    preview: "",
     rating: 12,
     reviews: [],
     _id: "0002"
@@ -47,7 +47,7 @@
     name: "Game of Thrones",
     description: "sean bean dies",
     thumbnail: "thrones pict",
-    preview: "youtube link",
+    preview: "",
     rating: 12,
     reviews: [],
     _id: "0003"

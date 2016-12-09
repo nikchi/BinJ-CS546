@@ -1,8 +1,8 @@
 <div class="review-box">
 	<div class="counter">
-		<a><i class="em em-clap"></i></a>
-		<p>{{ rating }}</p> {{!-- {{Will need to use jquery/ajax to update this number without reloading page}} --}}
-		<a><i class="em em-poop"></i></a>
+		<a id="upvote"><i class="em em-clap"></i></a>
+		<p id="score">{{ rating }}</p> {{!-- {{Will need to use jquery/ajax to update this number without reloading page}} --}}
+		<a id="downvote"><i class="em em-poop"></i></a>
 	</div>
 	{{#if flagged}}
 	<div class="flagged">

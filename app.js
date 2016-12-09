@@ -18,12 +18,18 @@ const handlebarsInstance = exphbs.create({
                 return new Handlebars.SafeString(JSON.stringify(obj, null, spacing));
 
             return new Handlebars.SafeString(JSON.stringify(obj));
-        }
+        },
+        exists: (variable, options) => {
+            if (typeof variable !== 'undefined') {
+                return options.fn(this);
+            }
+        }        
     },
     partialsDir: [
         'views/partials/'
     ]
 });
+
 
 const rewriteUnsupportedBrowserMethods = (req, res, next) => {
     // If the user posts to the server with a property called _method, rewrite the request's method
