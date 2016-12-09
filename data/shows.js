@@ -20,7 +20,7 @@ let exportedMethods = {
   },  
   getShowByName(name) {
     return shows().then((showCollection) => {
-      return showCollection.findOne({ title: name }).then((show) => {
+      return showCollection.findOne({ name: name }).then((show) => {
         if (!show) throw "show not found";
         return show;
       });
