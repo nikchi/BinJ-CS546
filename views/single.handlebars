@@ -5,8 +5,8 @@
 		{{#if show.preview}}
 			<iframe width="560" height="300" src={{show.preview}} frameborder="0" ></iframe>
 		{{/if}}
-		<p>Rating: {{ show.rating }}</p>
-		<p>Description: {{ show.description }}</p>
+		<p>Rated: {{ show.rating }}</p>
+		<p>Synopsis </br> {{ show.description }}</p>
 
 		<div class="reviews">
 			{{#each show.reviews}} {{> review }} {{/each}}
@@ -15,9 +15,9 @@
 		<div class="new-comment">
 			<h2> Submit your opinion </h2>
 			<form id="review-submit" method="post">
-				<input id="review-title" placeholder="Title" type="text" name="title"></br>
-				<input id="review-body" placeholder="Review goes here" type="text" name="review"></br>
-				<input id="review-rating" placeholder="$100%" type="number" name="rating"></br>
+				<input id="review-title" placeholder="Title" type="text" name="title" style="width:400px;"></br>
+				<textarea id="review-body" placeholder="Review goes here" name="review" style="width:400px;height:150px;"></textarea></br>
+				<input id="review-rating" placeholder="Numerical Rating $100%" type="number" name="rating" style="width:400px;"></br>
 				<button id="review-submit-button" type="submit">Submit</button>
 			</form>
 		</div>
