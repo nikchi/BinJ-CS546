@@ -59,6 +59,23 @@ let exportedMethods = {
       });
     });
   },
+  addReviewToShowByName(showName, poster, title, body) {
+    let newReview = {
+      _id : uuid.v4(),
+      title: title,
+      body: body,
+      poster: poster,
+      rating: 0,
+      flagged: false
+    };
+    return shows().then((showCollection) => {
+      return showCollection.findOne({ name: showName}).then((show) => {
+        if (!show) throw "show not found";
+        show.reviews.push(newReview);
+        return newReview;
+      });
+    });
+  },
   addShow(name, description, thumbnail, preview, rating, reviews) {
     return shows().then((showCollection) => {
       let newShow = {
