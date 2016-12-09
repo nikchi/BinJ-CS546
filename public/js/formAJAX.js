@@ -20,7 +20,7 @@
 		if (title && body && rating) {
 			var requestConfig = {
 				method: "POST",
-				url: "/",
+				url: "/shows",
 				contentType: 'application/json',
 				data: JSON.stringify({
 					showName: showTitle, 
@@ -31,7 +31,6 @@
 			};
 
 			$.ajax(requestConfig).then(function (responseMessage) {
-				window.loacation = "/shows/" + showTitle;
 			});
 		}
 	});
