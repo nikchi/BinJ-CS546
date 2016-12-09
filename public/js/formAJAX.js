@@ -42,7 +42,7 @@
 		counter = $("#score");
 	
 
-	var upVote.click(function (event) {
+	upVote.click(function (event) {
 		event.preventDefault();
 		
 
