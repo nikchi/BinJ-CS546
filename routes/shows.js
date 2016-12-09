@@ -4,7 +4,7 @@ const data = require("../data");
 const showsData = data.shows;
 
 router.get("/:id", (req, res) => {
-    showsData.getShowById(req.params.id).then((show) => {
+    showsData.getShowByName(req.params.id).then((show) => {
         res.render('single', { show: show});
     }).catch(() => {
         res.status(404).json({ error: "Post not found" });

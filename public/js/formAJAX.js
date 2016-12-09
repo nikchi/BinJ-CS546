@@ -16,7 +16,7 @@
 		var title = newTitle.val();
 		var body = newBody.val();
 		var rating = parseInt(newRating.val());
-		var showTitle = newShowTitle.html();
+		var showTitle = newShowTitle.text();
 		console.log(title + " " + body + " " + rating + " " + showTitle);
 
 		if (title && body && rating) {
@@ -33,7 +33,7 @@
 			};
 
 			$.ajax(requestConfig).then(function (responseMessage) {
-				window.loacation = "/shows/" + 0002;
+				window.loacation = "/shows/" + showName;
 			});
 		}
 	});
