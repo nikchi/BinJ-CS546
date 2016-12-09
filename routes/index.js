@@ -7,7 +7,7 @@ const constructorMethod = (app) => {
     app.use("/shows", showsRoutes);
 
     app.use("*", (req, res) => {
-      let route = path.resolve("static/404.html");
+      let route = path.resolve("public/html/404.html");
       res.status(404);
       res.sendFile(route);
     });
