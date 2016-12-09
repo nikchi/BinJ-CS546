@@ -71,8 +71,11 @@ let exportedMethods = {
     return shows().then((showCollection) => {
       return showCollection.findOne({ name: showName}).then((show) => {
         if (!show) throw "show not found";
-        show.reviews.push(newReview);
-        return newReview;
+        return showCollection.updateOne({ _id: show._id  }, {
+          $addToSet: {
+            reviews: newReview
+          }
+        });
       });
     });
   },
