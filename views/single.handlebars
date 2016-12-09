@@ -2,7 +2,10 @@
 	<div class="col-sm-12 col-md-6">
 		<a href="/shows">Back to Shows List</a>
 		<h2 id="title" >{{ show.name }}</h2>
-		<img class="show-art" href="{{ preview }}" src="{{ thumbnail }}" alt="{{ show.name }} art" height="300" width="200">
+		<img class="show-art"  src="{{ show.thumbnail }}" alt="{{ show.name }} art" height="300" width="200">
+		{{#if show.preview}}
+			<iframe width="560" height="315" src={{show.preview}} frameborder="0" ></iframe>
+		{{/if}}
 		<p>Rating: {{ show.rating }}</p>
 		<p>Description: {{ show.description }}</p>
 
