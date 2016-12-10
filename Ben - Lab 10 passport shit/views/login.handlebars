@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="box">
+		<form class="login" action="/login" method="post">
+		<div class="input">
+			<label for="username">Username:</label>
+			<input name ="username" type="text" id="username" value="{{{username}}}">
+		</div>
+		<div class="input">
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password">
+		</div>
+		<div class="input">
+			<input type="submit"/>
+		</div>
+		</form>
+		{{#if error}}
+			<div id="error">
+				<div id="errorText">{{error}}</div>
+			</div>
+		{{/if}}
+	</div>
+</div>
