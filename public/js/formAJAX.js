@@ -41,7 +41,7 @@
 	//variables for up/down voting elements
 	var upVote = $(".upvote"),
 		downVote = $(".downvote"),
-		counter = $(".score");
+		score = $(".score");
 	
 
 	upVote.click(function (event) {
@@ -52,6 +52,7 @@
 		var score = parseInt(counter.val());
 		var me = $(this);
 		var myId = me.attr('id');
+		var myScore = $("#"+myId+".score");
 		console.log(myId);
 		
 		var requestConfig = {
@@ -64,10 +65,11 @@
                 })
             };
             $.ajax(requestConfig).then(function (responseMessage) {
-				
+				myScore.text(responseMessage.score);
             });
 
 	});
+
 	downVote.click(function (event) {
 		event.preventDefault();
 
@@ -87,7 +89,7 @@
                 })
             };
             $.ajax(requestConfig).then(function (responseMessage) {
-				
+				myScore.text(responseMessage.score);
             });
 
 	});
