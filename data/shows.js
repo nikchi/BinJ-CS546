@@ -4,11 +4,23 @@ const users = require("./users");
 const reviewsData = require("./reviews");
 const uuid = require('node-uuid');
 
+getAverageScore = (show) => {
+  if (show.reviews.length == 0)
+    show.rating = 0;
+  else
+    show.rating /= show.reviews.length;
+  return show;
+}
+
 let exportedMethods = {
   getAllShows() {
     return shows().then((showCollection) => {
-      return showCollection.find({}).toArray();
-    })
+      let showsArray = showCollection.find({}).toArray();
+      return showsArray.then((returnArray) => {
+        returnArray.map(getAverageScore);
+        return returnArray;
+      });
+    });
   },
   getShowById(id) {
     return shows().then((showCollection) => {
@@ -22,6 +34,8 @@ let exportedMethods = {
     return shows().then((showCollection) => {
       return showCollection.findOne({ name: name }).then((show) => {
         if (!show) throw "show not found";
+        if (show.reviews.length == 0) show.reviews.length = 1;
+        show.rating /= show.reviews.length;
         return show;
       });
     });
