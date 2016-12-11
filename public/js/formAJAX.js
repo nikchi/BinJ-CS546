@@ -49,7 +49,6 @@
 	
 		console.log("upvoted");
 		var showName = newShowTitle.text();
-		var score = parseInt(counter.val());
 		var me = $(this);
 		var myId = me.attr('id');
 		var myScore = $("#"+myId+".score");
@@ -77,6 +76,7 @@
 		var showName = newShowTitle.text();
 		var me = $(this);
 		var myId = me.attr('id');
+		var myScore = $("#"+myId+".score");
 		console.log(myId);
 		
 		var requestConfig = {
@@ -89,6 +89,7 @@
                 })
             };
             $.ajax(requestConfig).then(function (responseMessage) {
+				
 				myScore.text(responseMessage.score);
             });
 
