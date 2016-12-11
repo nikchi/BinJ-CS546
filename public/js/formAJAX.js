@@ -51,7 +51,8 @@
 		var showName = newShowTitle.text();
 		var me = $(this);
 		var myId = me.attr('id');
-		var myScore = $("#"+myId+".score");
+		var myScoreContainer = $("#"+myId+".score");
+		let myScore = parseInt(myScoreContainer.text());
 		console.log(myId);
 		
 		var requestConfig = {
@@ -64,7 +65,7 @@
                 })
             };
             $.ajax(requestConfig).then(function (responseMessage) {
-				myScore.text(responseMessage.score);
+				myScoreContainer.text(++myScore);
             });
 
 	});
@@ -76,7 +77,9 @@
 		var showName = newShowTitle.text();
 		var me = $(this);
 		var myId = me.attr('id');
-		var myScore = $("#"+myId+".score");
+		var myScoreContainer = $("#"+myId+".score");
+		let myScore = parseInt(myScoreContainer.text());
+		
 		console.log(myId);
 		
 		var requestConfig = {
@@ -89,8 +92,7 @@
                 })
             };
             $.ajax(requestConfig).then(function (responseMessage) {
-				
-				myScore.text(responseMessage.score);
+				myScoreContainer.text(--myScore);
             });
 
 	});

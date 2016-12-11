@@ -25,14 +25,14 @@ router.post("/", (req, res) => {
 });
 
 router.post("/up", (req, res) => {
-	let newScore = showsData.changeReviewRateUp(req.body.showName, req.body.reviewId);
+	showsData.changeReviewRateUp(req.body.showName, req.body.reviewId);
 	console.log("review incremented");
-	res.json({success: true, score: newScore});
+	res.json({success: true});
 });
 
 router.post("/down", (req, res) => {
-	let newScore = showsData.changeReviewRateDown(req.body.showName, req.body.reviewId);
+	showsData.changeReviewRateDown(req.body.showName, req.body.reviewId);
 	console.log("review decremented");
-	res.json({success: true, score: newScore});
+	res.json({success: true});
 });
 module.exports = router;
