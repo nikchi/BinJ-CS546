@@ -17,7 +17,7 @@ let exportedMethods = {
         return show;
       });
     });
-  },  
+  },
   getShowByName(name) {
     return shows().then((showCollection) => {
       return showCollection.findOne({ name: name }).then((show) => {
@@ -30,7 +30,10 @@ let exportedMethods = {
     return shows().then((showCollection) => {
       return showCollection.findOne({ name: showName }).then((show) => {
         if (!show) throw "show not found";
-        return show.reviews.updateOne({ _id: reviewId }, { $inc: { "score": 1 } });
+        show.reviews.find(review => review._id == reviewId).score++;
+        return showCollection.updateOne({ _id: show._id }, show, { upsert: true }
+
+        );
       });
     });
   },
@@ -38,13 +41,16 @@ let exportedMethods = {
     return shows().then((showCollection) => {
       return showCollection.findOne({ name: showName }).then((show) => {
         if (!show) throw "show not found";
-        return show.reviews.updateOne({ _id: reviewId }, { $inc: { "score": -1 } });
+        show.reviews.find(review => review._id == reviewId).score--;
+        return showCollection.updateOne({ _id: show._id }, show, { upsert: true }
+
+        );
       });
     });
   },
   addReviewToShow(showId, poster, title, body) {
     let newReview = {
-      _id : uuid.v4(),
+      _id: uuid.v4(),
       title: title,
       body: body,
       poster: poster,
@@ -52,7 +58,7 @@ let exportedMethods = {
       flagged: false
     };
     return shows().then((showCollection) => {
-      return showCollection.findOne({ _id: showId}).then((show) => {
+      return showCollection.findOne({ _id: showId }).then((show) => {
         if (!show) throw "show not find";
         show.reviews.push(newReview);
         return newReview;
@@ -63,7 +69,7 @@ let exportedMethods = {
     if (rating < 0) rating = 0;
     if (rating > 10) rating = 10;
     let newReview = {
-      _id : uuid.v4(),
+      _id: uuid.v4(),
       title: title,
       body: body,
       poster: poster,
@@ -72,14 +78,14 @@ let exportedMethods = {
       flagged: false
     };
     return shows().then((showCollection) => {
-      return showCollection.findOne({ name: showName}).then((show) => {
+      return showCollection.findOne({ name: showName }).then((show) => {
         if (!show) throw "show not found";
-        return showCollection.updateOne({ _id: show._id  }, {
+        return showCollection.updateOne({ _id: show._id }, {
           $addToSet: {
             reviews: newReview
           },
           $inc: {
-            rating : rating
+            rating: rating
           }
         });
       });
