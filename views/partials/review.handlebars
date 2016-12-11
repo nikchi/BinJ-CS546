@@ -1,9 +1,9 @@
 <hr>
 <div class="review-box">
-	<div class="counter">
-		<a id="{{_id}}" class="upvote" href=""><i class="em em-clap"></i></a>
+	<div class="counter"> 
+		<a id="{{_id}}" class="upvote" href="upvote"><span>Upvote</span><i class="em em-clap"></i></a>
 		<p id="{{_id}}" class="score">{{ score }}</p> 
-		<a id="{{_id}}" class="downvote" href=""><i class="em em-poop"></i></a>
+		<a id="{{_id}}" class="downvote" href="downote"><span>Downvote</span><i class="em em-poop"></i></a>
 	</div>
 	{{#if flagged}}
 	<div class="flagged">

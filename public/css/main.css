@@ -55,6 +55,10 @@ main {
 	display:block;
 }
 
+span {
+	font-size:0;
+}
+
 .flagged {
 	display: inline-block;
 	white-space: nowrap;	
