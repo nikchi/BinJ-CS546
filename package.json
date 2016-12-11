@@ -15,9 +15,9 @@
   "author": "Nick Choi Stan Mikuta Ben Tucker Jeremy Bassi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nikchi/BinJ-CS546/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/nikchi/BinJ-CS546#readme",
+  "homepage": "",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
