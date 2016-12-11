@@ -23,7 +23,7 @@ router.post("/new", (req, res) => {
     return;
   }
 
-  userData.addUser(req.body.username, req.body.password, req.body.profile_picture, req.body.bio).then((user) => {
+  userData.addUser(req.body.username, req.body.password, req.body.bio).then((user) => {
     res.redirect("/users/" + user._id);
   }).catch((e) => {
     res.render("users/new", { error: e });
@@ -32,7 +32,7 @@ router.post("/new", (req, res) => {
 
 router.get("/:id", (req, res) => {
     userData.getUserById(req.params.id).then((user) => {
-        res.json(user);
+        res.render("users/show", { user: user });
     }).catch(() => {
         res.status(404).json({ error: "User not found" });
     });
@@ -45,42 +45,6 @@ router.get("/", (req, res) => {
         // Something went wrong with the server!
         res.sendStatus(500);
     });
-});
-
-router.post("/", (req, res) => {
-    let userInfo = req.body;
-
-    if (!userInfo) {
-        res.status(400).json({ error: "You must provide data to create a user" });
-        return;
-    }
-
-    if (!userInfo.username) {
-        res.status(400).json({ error: "You must provide a username" });
-        return;
-    }
-
-    if (!userInfo.hashedPassword) {
-        res.status(400).json({ error: "You must provide a hashedPassword" });
-        return;
-    }
-
-    if (!userInfo.profilePicture) {
-        res.status(400).json({ error: "You must provide a profilePicture" });
-        return;
-    }
-
-    if (!userInfo.bio) {
-        res.status(400).json({ error: "You must provide a bio" });
-        return;
-    }
-
-    userData.addUser(userInfo.username, userInfo.hashedPassword, userInfo.profilePicture, userInfo.bio)
-        .then((newUser) => {
-            res.json(newUser);
-        }, () => {
-            res.sendStatus(500);
-        });
 });
 
 module.exports = router;
