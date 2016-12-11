@@ -59,13 +59,14 @@ let exportedMethods = {
       });
     });
   },
-  addReviewToShowByName(showName, poster, title, body) {
+  addReviewToShowByName(showName, poster, title, body, rating) {
     let newReview = {
       _id : uuid.v4(),
       title: title,
       body: body,
       poster: poster,
-      rating: 0,
+      rating: rating,
+      score: 0,
       flagged: false
     };
     return shows().then((showCollection) => {
