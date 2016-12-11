@@ -22,6 +22,12 @@ dbConnection().then((db) => {
 	}).then(() => {
 		return shows.addShow("Game of Thrones", "sean bean dies", "https://images-na.ssl-images-amazon.com/images/M/MV5BMjM5OTQ1MTY5Nl5BMl5BanBnXkFtZTgwMjM3NzMxODE@._V1_SY1000_CR0,0,674,1000_AL_.jpg", "", 0,[]);
 	}).then(() => {
+		return users.addUser("steve", "steverulez99","I really like shows");
+	}).then(() => {
+		return users.addUser("ricky", "dontcallmerick","I really hate shows");
+	}).then(() => {
+		return users.addUser("LANA", "fuckarcher", "Shows are okay I guess");
+	}).then(() => {
 		console.log("Database seeded");
 		db.close();
 	})

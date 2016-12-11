@@ -33,13 +33,11 @@ router.post("/", (req, res) => {
 
 router.post("/up", (req, res) => {
 	showsData.changeReviewRateUp(req.body.showName, req.body.reviewId);
-	console.log("review incremented");
 	res.json({success: true});
 });
 
 router.post("/down", (req, res) => {
 	showsData.changeReviewRateDown(req.body.showName, req.body.reviewId);
-	console.log("review decremented");
 	res.json({success: true});
 });
 module.exports = router;
