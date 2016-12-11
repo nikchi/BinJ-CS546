@@ -31,7 +31,7 @@ router.post("/up", (req, res) => {
 });
 
 router.post("/down", (req, res) => {
-	showsData.changeReviewRateUp(req.body.showName, req.body.reviewId);
+	showsData.changeReviewRateDown(req.body.showName, req.body.reviewId);
 	console.log("review decremented");
 	res.json({success: true});
 });
