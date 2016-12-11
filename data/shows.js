@@ -22,6 +22,7 @@ let exportedMethods = {
     return shows().then((showCollection) => {
       return showCollection.findOne({ name: name }).then((show) => {
         if (!show) throw "show not found";
+        show.rating /= show.reviews.length;
         return show;
       });
     });
