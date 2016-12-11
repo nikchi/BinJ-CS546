@@ -24,7 +24,13 @@ router.post("/", (req, res) => {
 	res.json({success: true});
 });
 
-router.post("/:id/up", (req, res) => {
+router.post("/up", (req, res) => {
+	showsData.changeReviewRateUp();
+	res.json({success: true});
+});
 
+router.post("/down", (req, res) => {
+	showsData.changeReviewRateDown();
+	res.json({success: true});
 });
 module.exports = router;

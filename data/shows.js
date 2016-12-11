@@ -34,7 +34,7 @@ let exportedMethods = {
       });
     });
   },
-  changeReviewRateUp(showId, reviewId) {
+  changeReviewRateDown(showId, reviewId) {
     return shows().then((showCollection) => {
       return showCollection.findOne({ _id: id }).then((show) => {
         if (!show) throw "show not found";
