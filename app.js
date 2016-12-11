@@ -1,5 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require('passport-local').Strategy;
 const app = express();
 const static = express.static(__dirname + '/public');
 
@@ -48,6 +52,20 @@ app.use("/public", static);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(rewriteUnsupportedBrowserMethods);
+app.use(cookieParser());
+app.use(require('express-session')({
+  secret: 'doge',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+var userData = require('./data/users.js');
+passport.use(new LocalStrategy(userData.authenticate));
+passport.serializeUser(userData.serializeUser);
+passport.deserializeUser(userData.deserializeUser);
 
 app.engine('handlebars', handlebarsInstance.engine);
 app.set('view engine', 'handlebars');
