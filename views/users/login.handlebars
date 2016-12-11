@@ -1,6 +1,6 @@
 <section id="login-section">
     <h1>Log In</h1>
-    <div id="login-error"></div>
+    <div id="login-error">{{ error }}</div>
     <form action="/users/login" method="POST">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" />

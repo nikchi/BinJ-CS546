@@ -8,7 +8,7 @@ router.get("/login", (req, res) => {
   if (req.isAuthenticated())
     res.redirect("/" + req.user._id);
   else
-    res.render("users/login", { message: req.flash('error') });
+    res.render("users/login", { error: req.flash('error') });
 });
 
 router.post("/login", passport.authenticate('local', { successRedirect: "/", failureRedirect: "/users/login", failureFlash: true }));
