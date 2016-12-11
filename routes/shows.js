@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    showsData.addReviewToShowByName(req.body.showName, req.body.poster, req.body.title, req.body.body);
+    showsData.addReviewToShowByName(req.body.showName, req.body.poster, req.body.title, req.body.body, req.body.rating);
 	res.json({success: true});
 });
 
