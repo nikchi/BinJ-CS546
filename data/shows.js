@@ -60,6 +60,8 @@ let exportedMethods = {
     });
   },
   addReviewToShowByName(showName, poster, title, body, rating) {
+    if (rating < 0) rating = 0;
+    if (rating > 10) rating = 10;
     let newReview = {
       _id : uuid.v4(),
       title: title,
