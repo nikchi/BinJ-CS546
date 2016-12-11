@@ -51,6 +51,10 @@ main {
 	white-space: nowrap;
 }
 
+.upvote, .downvote {
+	display:block;
+}
+
 .flagged {
 	display: inline-block;
 	white-space: nowrap;	

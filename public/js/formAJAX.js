@@ -39,22 +39,26 @@
 	});
 
 	//variables for up/down voting elements
-	var upVote = $("#upvote"),
-		downVote = $("#downvote"),
-		counter = $("#score");
+	var upVote = $(".upvote"),
+		downVote = $(".downvote"),
+		counter = $(".score");
 	
 
 	upVote.click(function (event) {
 		event.preventDefault();
-
+	
+		console.log("upvoted");
+		var showName = newShowTitle.text();
 		var score = parseInt(counter.val());
+		var myId = upVote.attr('id');
 		
 		var requestConfig = {
                 method: "POST",
                 url: "/shows/up",
                 contentType: 'application/json',
                 data: JSON.stringify({
-					reviewId
+					showName: showName,
+					reviewId: myId
                 })
             };
             $.ajax(requestConfig).then(function (responseMessage) {
@@ -65,14 +69,19 @@
 	downVote.click(function (event) {
 		event.preventDefault();
 
+		console.log("downvoted");
+		var showName = newShowTitle.text();
 		var score = parseInt(counter.val());
+		var myId = downVote.attr('id');
+		console.log(myId);
 		
 		var requestConfig = {
                 method: "POST",
                 url: "/shows/down",
                 contentType: 'application/json',
                 data: JSON.stringify({
-					reviewId
+					showName: showName,
+					reviewId: myId
                 })
             };
             $.ajax(requestConfig).then(function (responseMessage) {
