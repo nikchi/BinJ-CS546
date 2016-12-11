@@ -6,12 +6,12 @@ const passport = require('passport');
 
 router.get("/login", (req, res) => {
   if (req.isAuthenticated())
-    res.redirect("/users/" + req.user._id);
+    res.redirect("/shows" + req.user._id);
   else
     res.render("users/login", { error: req.flash('error') });
 });
 
-router.post("/login", passport.authenticate('local', { successRedirect: "/", failureRedirect: "/users/login", failureFlash: true }));
+router.post("/login", passport.authenticate('local', { successRedirect: "/shows", failureRedirect: "/users/login", failureFlash: true }));
 
 router.get("/new", (req, res) => {
   res.render("users/new");
