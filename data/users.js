@@ -14,27 +14,6 @@ const bcrypt = require('bcrypt-nodejs');
 }
 */
 let exportedMethods = {
-  authenticate(username, password, done) {
-    getUserByUsername(username).then((user) => {
-      checkPassword(user, password).then((res) => {
-        return done(null, user);
-      }).catch((e) => {
-        return done(null, false, { message: 'Incorrect password' });
-      });   
-    }).catch((e) => {
-      return done(null, false, { message: 'Incorrect username' });
-    });
-  },
-  serializeUser(user, done) {
-    done(null, user._id);
-  },
-  deserializeUser(id, done) {
-    getUserById(id).then((user) => {
-      done(null, user);
-    }).catch((e) => {
-      done(e, null);
-    })
-  },
   checkPassword(user, password) {
     return new Promise((resolve, reject) => {
       bcrypt.compare(password, user.password, (err, res) => {
@@ -56,6 +35,27 @@ let exportedMethods = {
         if (!user) throw "User not found";
         return user;
       });
+    });
+  },
+  serializeUser(user, done) {
+    done(null, user._id);
+  },
+  deserializeUser(id, done) {
+    getUserById(id).then((user) => {
+      done(null, user);
+    }).catch((e) => {
+      done(e, null);
+    })
+  },
+  authenticate(username, password, done) {
+    getUserByUsername(username).then((user) => {
+      checkPassword(user, password).then((res) => {
+        return done(null, user);
+      }).catch((e) => {
+        return done(null, false, { message: 'Incorrect password' });
+      });   
+    }).catch((e) => {
+      return done(null, false, { message: 'Incorrect username' });
     });
   },
   // This is a fun new syntax that was brought forth in ES6, where we can define

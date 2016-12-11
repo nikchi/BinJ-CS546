@@ -2,6 +2,16 @@ const express = require('express');
 const router = express.Router();
 const data = require("../data");
 const userData = data.users;
+const passport = require('passport');
+
+router.get("/login", (req, res) => {
+  if (req.isAuthenticated())
+    res.redirect("/" + req.user._id);
+  else
+    res.render("users/login", { message: req.flash('error') });
+});
+
+router.post("/login", passport.authenticate('local', { successRedirect: "/", failureRedirect: "/users/login", failureFlash: true }));
 
 router.get("/:id", (req, res) => {
     userData.getUserById(req.params.id).then((user) => {
