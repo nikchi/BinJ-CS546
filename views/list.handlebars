@@ -1,5 +1,9 @@
 <h1 id="the-heading">Stop watching, start BinJing!</h1>
+{{#if user }}
+<p> Logged in as: {{ user.username }}</p>
+{{ else }}
 <a href="/users/login"> Login </a>
+{{/if }}
 <div class="row">
     <div class="shows-list">
         {{#each shows}}

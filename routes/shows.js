@@ -7,7 +7,7 @@ const passport = require('passport');
 router.get("/:id", (req, res) => {
   var poster = req.isAuthenticated() ? req.user.username : "Anonymous";
     showsData.getShowByName(req.params.id).then((show) => {
-        res.render('single', { show: show, poster: poster});
+        res.render('single', { show: show, poster: poster, user: req.user});
     }).catch(() => {
         res.status(404).json({ error: "Post not found" });
     });
@@ -15,7 +15,7 @@ router.get("/:id", (req, res) => {
 
 router.get("/", (req, res) => {
     showsData.getAllShows().then((showList) => {
-        res.render('list', { shows: showList });
+        res.render('list', { shows: showList, user: req.user });
     }).catch((e) => {
         res.status(500).json({ error: e });
     });
