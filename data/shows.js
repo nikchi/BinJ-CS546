@@ -44,9 +44,11 @@ let exportedMethods = {
     return shows().then((showCollection) => {
       return showCollection.findOne({ name: showName }).then((show) => {
         if (!show) throw "show not found";
-        let newScore = show.reviews.find(review => review._id == reviewId).score++;
+        let newScore = ++show.reviews.find(review => review._id == reviewId).score;
+        if (newScore < -20) show.reviews.find(review => review._id == reviewId).flagged = true;
+        if (newScore > -20) show.reviews.find(review => review._id == reviewId).flagged = false;
         return showCollection.updateOne({ _id: show._id }, show, { upsert: true }).then(() => {
-          return newScore++;
+          return newScore;
         });
       });
     });
@@ -55,9 +57,11 @@ let exportedMethods = {
     return shows().then((showCollection) => {
       return showCollection.findOne({ name: showName }).then((show) => {
         if (!show) throw "show not found";
-        let newScore = show.reviews.find(review => review._id == reviewId).score--;
+        let newScore = --show.reviews.find(review => review._id == reviewId).score;
+        if (newScore < -20) show.reviews.find(review => review._id == reviewId).flagged = true;
+        if (newScore > -20) show.reviews.find(review => review._id == reviewId).flagged = false;
         return showCollection.updateOne({ _id: show._id }, show, { upsert: true }).then(() => {
-          return newScore--;
+          return newScore;
         });
       });
     });
