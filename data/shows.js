@@ -77,6 +77,9 @@ let exportedMethods = {
         return showCollection.updateOne({ _id: show._id  }, {
           $addToSet: {
             reviews: newReview
+          },
+          $inc: {
+            rating : rating
           }
         });
       });
