@@ -13,6 +13,7 @@ const bcrypt = require('bcrypt-nodejs');
    Bio:”text bio”
    }
    */
+
 let checkPassword = (user, password) => {
   return new Promise((resolve, reject) => {
     bcrypt.compare(password, user.password, (err, res) => {
@@ -88,7 +89,7 @@ let addUser = (username, password, profilePicture, bio) => {
     return userCollection.insertOne(newUser).then((newInsertInformation) => {
       return newInsertInformation.insertedId;
     }).then((newId) => {
-      return this.getUserById(newId);
+      return getUserById(newId);
     });
   });
 };

@@ -1,0 +1,22 @@
+<section id="new-user-section">
+    <h1>New User</h1>
+    <div id="new-user-error">{{ error }}</div>
+    <form action="/users/new" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+
+        <label for="confirm">confirm:</label>
+        <input type="confirm" id="confirm" name="confirm" />
+
+        <label for="profile_picture">Profile Picture:</label>
+        <input type="file" id="profile_picture" name="profile_picture" />
+
+        <label for="bio">Bio:</label>
+        <textarea id="bio" name="bio"></textarea>
+
+        <input type="submit" id="submit" value="Create!" />
+    </form>
+</section>

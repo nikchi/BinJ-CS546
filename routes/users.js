@@ -6,12 +6,29 @@ const passport = require('passport');
 
 router.get("/login", (req, res) => {
   if (req.isAuthenticated())
-    res.redirect("/" + req.user._id);
+    res.redirect("/users/" + req.user._id);
   else
     res.render("users/login", { error: req.flash('error') });
 });
 
 router.post("/login", passport.authenticate('local', { successRedirect: "/", failureRedirect: "/users/login", failureFlash: true }));
+
+router.get("/new", (req, res) => {
+  res.render("users/new");
+});
+
+router.post("/new", (req, res) => {
+  if (req.body.password !== req.body.confirm) {
+    res.render("users/new", { error: "Confirmation must match password" });
+    return;
+  }
+
+  userData.addUser(req.body.username, req.body.password, req.body.profile_picture, req.body.bio).then((user) => {
+    res.redirect("/users/" + user._id);
+  }).catch((e) => {
+    res.render("users/new", { error: e });
+  });
+});
 
 router.get("/:id", (req, res) => {
     userData.getUserById(req.params.id).then((user) => {
