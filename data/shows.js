@@ -43,7 +43,9 @@ let exportedMethods = {
     return shows().then((showCollection) => {
       return showCollection.findOne({ name: showName }).then((show) => {
         if (!show) throw "show not found";
-        return show.reviews.updateOne({ _id: reviewId }, { $inc: { "reviews.rating": 1 } });
+        return show.reviews.find((review) => {
+          return review._id == reviewId;
+        }).rating++;
       });
     });
   },
