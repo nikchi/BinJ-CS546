@@ -4,11 +4,23 @@ const users = require("./users");
 const reviewsData = require("./reviews");
 const uuid = require('node-uuid');
 
+getAverageScore = (show) => {
+  if (show.reviews.length == 0)
+    show.rating = 0;
+  else
+    show.rating /= show.reviews.length;
+  return show;
+}
+
 let exportedMethods = {
   getAllShows() {
     return shows().then((showCollection) => {
-      return showCollection.find({}).toArray();
-    })
+      let showsArray = showCollection.find({}).toArray();
+      return showsArray.then((returnArray) => {
+        returnArray.map(getAverageScore);
+        return returnArray;
+      });
+    });
   },
   getShowById(id) {
     return shows().then((showCollection) => {
@@ -17,7 +29,7 @@ let exportedMethods = {
         return show;
       });
     });
-  },  
+  },
   getShowByName(name) {
     return shows().then((showCollection) => {
       return showCollection.findOne({ name: name }).then((show) => {
@@ -45,7 +57,7 @@ let exportedMethods = {
   },
   addReviewToShow(showId, poster, title, body) {
     let newReview = {
-      _id : uuid.v4(),
+      _id: uuid.v4(),
       title: title,
       body: body,
       poster: poster,
@@ -53,7 +65,7 @@ let exportedMethods = {
       flagged: false
     };
     return shows().then((showCollection) => {
-      return showCollection.findOne({ _id: showId}).then((show) => {
+      return showCollection.findOne({ _id: showId }).then((show) => {
         if (!show) throw "show not find";
         show.reviews.push(newReview);
         return newReview;
@@ -64,7 +76,7 @@ let exportedMethods = {
     if (rating < 0) rating = 0;
     if (rating > 10) rating = 10;
     let newReview = {
-      _id : uuid.v4(),
+      _id: uuid.v4(),
       title: title,
       body: body,
       poster: poster,
@@ -73,14 +85,14 @@ let exportedMethods = {
       flagged: false
     };
     return shows().then((showCollection) => {
-      return showCollection.findOne({ name: showName}).then((show) => {
+      return showCollection.findOne({ name: showName }).then((show) => {
         if (!show) throw "show not found";
-        return showCollection.updateOne({ _id: show._id  }, {
+        return showCollection.updateOne({ _id: show._id }, {
           $addToSet: {
             reviews: newReview
           },
           $inc: {
-            rating : rating
+            rating: rating
           }
         });
       });
