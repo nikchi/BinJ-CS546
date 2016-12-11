@@ -32,7 +32,7 @@
 
 			$.ajax(requestConfig).then(function (responseMessage) {
         //TODO change if poster is established
-        let template = "<hr><div class='review-box'><div class='counter'><a id='upvote'><i class='em em-clap'></i></a><p id='score'>" + rating + "</p><a id='downvote'><i class='em em-poop'></i></a></div> <div class='review-body'><h2>" + title + "</h2><p> Rating: " + rating + "</p><p> Poster: " + "" + "</p><p> " + body + "</p></div></div></br>";
+        let template = "<hr><div class='review-box'><div class='counter'><a id='upvote'><i class='em em-clap'></i></a><p id='score'>" + "0" + "</p><a id='downvote'><i class='em em-poop'></i></a></div> <div class='review-body'><h2>" + title + "</h2><p> Rating: " + rating + "</p><p> Poster: " + "" + "</p><p> " + body + "</p></div></div></br>";
         $("div.reviews").append(template);
 			});
 		}
