@@ -86,7 +86,7 @@ let exportedMethods = {
       _id: uuid.v4(),
       title: title,
       body: body,
-      poster: poster,
+      poster: poster? poster : "Anonymous",
       rating: rating,
       score: 0,
       flagged: false
