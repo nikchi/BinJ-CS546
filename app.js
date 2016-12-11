@@ -62,7 +62,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-var userData = require('./data/users.js');
+const userData = require('./data/users.js');
 passport.use(new LocalStrategy(userData.authenticate));
 passport.serializeUser(userData.serializeUser);
 passport.deserializeUser(userData.deserializeUser);
