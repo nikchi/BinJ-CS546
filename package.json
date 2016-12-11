@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/nikchi/BinJ-CS546.git"
   },
-  "author": "Nick Choi Stan Mikuta Ben Tucker",
+  "author": "Nick Choi Stan Mikuta Ben Tucker Jeremy Bassi",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nikchi/BinJ-CS546/issues"
