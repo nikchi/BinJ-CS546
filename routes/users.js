@@ -11,6 +11,11 @@ router.get("/login", (req, res) => {
     res.render("users/login", { error: req.flash('error') });
 });
 
+router.get("/logout", (req, res) => {
+  req.logOut();
+  res.redirect("/shows");
+});
+
 router.post("/login", passport.authenticate('local', { successRedirect: "/shows", failureRedirect: "/users/login", failureFlash: true }));
 
 router.get("/new", (req, res) => {
