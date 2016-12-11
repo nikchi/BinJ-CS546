@@ -2,7 +2,7 @@
 <div class="review-box">
 	<div class="counter">
 		<a id="{{_id}}" class="upvote" href=""><i class="em em-clap"></i></a>
-		<p id="score">{{ score }}</p> {{!-- {{Will need to use jquery/ajax to update this number without reloading page}} --}}
+		<p id="{{_id}}" class="score">{{ score }}</p> 
 		<a id="{{_id}}" class="downvote" href=""><i class="em em-poop"></i></a>
 	</div>
 	{{#if flagged}}

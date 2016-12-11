@@ -50,7 +50,9 @@
 		console.log("upvoted");
 		var showName = newShowTitle.text();
 		var score = parseInt(counter.val());
-		var myId = upVote.attr('id');
+		var me = $(this);
+		var myId = me.attr('id');
+		console.log(myId);
 		
 		var requestConfig = {
                 method: "POST",
@@ -71,8 +73,8 @@
 
 		console.log("downvoted");
 		var showName = newShowTitle.text();
-		var score = parseInt(counter.val());
-		var myId = downVote.attr('id');
+		var me = $(this);
+		var myId = me.attr('id');
 		console.log(myId);
 		
 		var requestConfig = {
