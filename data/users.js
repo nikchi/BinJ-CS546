@@ -9,7 +9,6 @@ const bcrypt = require('bcrypt-nodejs');
    sessionId:cookies1234
    hashedPassword:#hunter1
    Username:”i-like-shows”
-   profilePicture:”picturedata”
    Bio:”text bio”
    }
    */
@@ -76,13 +75,12 @@ let getUserById = (id) => {
   });
 };
 
-let addUser = (username, password, profilePicture, bio) => {
+let addUser = (username, password, bio) => {
   return users().then((userCollection) => {
     let newUser = {
       username: username,
       password: bcrypt.hashSync(password, bcrypt.genSaltSync()),
       _id: uuid.v4(),
-      profilePicture: profilePicture,
       bio: bio
     };
 
