@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const data = require("../data");
+const xss = require('xss');
 const showsData = data.shows;
 const passport = require('passport');
 
@@ -27,7 +28,7 @@ router.post("/", (req, res) => {
     poster = req.user.username;
 
   console.log(req.user);
-  showsData.addReviewToShowByName(req.body.showName, poster, req.body.title, req.body.body, req.body.rating);
+  showsData.addReviewToShowByName(req.body.showName, poster, xss(req.body.title), xss(req.body.body), req.body.rating);
 	res.json({success: true});
 });
 
