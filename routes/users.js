@@ -29,6 +29,7 @@ router.post("/new", (req, res) => {
   }
 
   userData.addUser(req.body.username, req.body.password, req.body.bio).then((user) => {
+    req.login(user, (err) => {});
     res.redirect("/users/" + user._id);
   }).catch((e) => {
     res.render("users/new", { error: e });
