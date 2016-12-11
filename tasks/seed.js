@@ -10,7 +10,7 @@ dbConnection().then((db) => {
 	return db.dropDatabase().then(() => {
 		return dbConnection;
 	}).then((db) => {
-		return shows.addShow("westworld", "have you ever questioned the nature of your reality", "http://www.gstatic.com/tv/thumb/tvbanners/13108003/p13108003_b_v8_aa.jpg", "https://www.youtube.com/embed/1D-GWBgnTJU", 15, []);
+		return shows.addShow("westworld", "have you ever questioned the nature of your reality", "http://www.gstatic.com/tv/thumb/tvbanners/13108003/p13108003_b_v8_aa.jpg", "https://www.youtube.com/embed/1D-GWBgnTJU", 0, []);
 	}).then(() => {
 		return shows.addReviewToShowByName("westworld", "steve", "good show", "i like this show", 9);
 	}).then(() => {
