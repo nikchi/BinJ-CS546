@@ -44,10 +44,10 @@ let exportedMethods = {
     return shows().then((showCollection) => {
       return showCollection.findOne({ name: showName }).then((show) => {
         if (!show) throw "show not found";
-        show.reviews.find(review => review._id == reviewId).score++;
-        return showCollection.updateOne({ _id: show._id }, show, { upsert: true }
-
-        );
+        let newScore = show.reviews.find(review => review._id == reviewId).score++;
+        return showCollection.updateOne({ _id: show._id }, show, { upsert: true }).then(() => {
+          return newScore++;
+        });
       });
     });
   },
@@ -55,10 +55,10 @@ let exportedMethods = {
     return shows().then((showCollection) => {
       return showCollection.findOne({ name: showName }).then((show) => {
         if (!show) throw "show not found";
-        show.reviews.find(review => review._id == reviewId).score--;
-        return showCollection.updateOne({ _id: show._id }, show, { upsert: true }
-
-        );
+        let newScore = show.reviews.find(review => review._id == reviewId).score--;
+        return showCollection.updateOne({ _id: show._id }, show, { upsert: true }).then(() => {
+          return newScore--;
+        });
       });
     });
   },
