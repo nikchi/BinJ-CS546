@@ -26,17 +26,17 @@ let exportedMethods = {
       });
     });
   },
-  changeReviewRateUp(showId, reviewId) {
+  changeReviewRateUp(showName, reviewId) {
     return shows().then((showCollection) => {
-      return showCollection.findOne({ _id: id }).then((show) => {
+      return showCollection.findOne({ name: showName }).then((show) => {
         if (!show) throw "show not found";
         return show.reviews.updateOne({ _id: reviewId }, { $inc: { "reviews.rating": 1 } });
       });
     });
   },
-  changeReviewRateDown(showId, reviewId) {
+  changeReviewRateDown(showName, reviewId) {
     return shows().then((showCollection) => {
-      return showCollection.findOne({ _id: id }).then((show) => {
+      return showCollection.findOne({ name: showName }).then((show) => {
         if (!show) throw "show not found";
         return show.reviews.updateOne({ _id: reviewId }, { $inc: { "reviews.rating": -1 } });
       });
